@@ -1,14 +1,14 @@
-# _____
+# Datepicker Widget for Mailery Platform
 
-**_____**
+**Datepicker Widget for Mailery Platform**
 
-[![Latest Stable Version](https://poser.pugx.org/maileryio/_____/v/stable)](https://packagist.org/packages/maileryio/_____)
-[![Total Downloads](https://poser.pugx.org/maileryio/_____/downloads)](https://packagist.org/packages/maileryio/_____)
-[![Build Status](https://travis-ci.com/maileryio/_____.svg?branch=master)](https://travis-ci.com/maileryio/_____)
-[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/maileryio/_____.svg)](https://scrutinizer-ci.com/g/maileryio/_____/)
-[![Scrutinizer Code Coverage](https://img.shields.io/scrutinizer/coverage/g/maileryio/_____.svg)](https://scrutinizer-ci.com/g/maileryio/_____/)
+[![Latest Stable Version](https://poser.pugx.org/maileryio/widget-datepicker/v/stable)](https://packagist.org/packages/maileryio/widget-datepicker)
+[![Total Downloads](https://poser.pugx.org/maileryio/widget-datepicker/downloads)](https://packagist.org/packages/maileryio/widget-datepicker)
+[![Build Status](https://travis-ci.com/maileryio/widget-datepicker.svg?branch=master)](https://travis-ci.com/maileryio/widget-datepicker)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/maileryio/widget-datepicker.svg)](https://scrutinizer-ci.com/g/maileryio/widget-datepicker/)
+[![Scrutinizer Code Coverage](https://img.shields.io/scrutinizer/coverage/g/maileryio/widget-datepicker.svg)](https://scrutinizer-ci.com/g/maileryio/widget-datepicker/)
 
-_____
+Datepicker Widget for Mailery Platform
 
 ## Installation
 
@@ -17,13 +17,13 @@ The preferred way to install this library is through [composer](http://getcompos
 Either run
 
 ```sh
-php composer.phar require "maileryio/_____"
+php composer.phar require "maileryio/widget-datepicker"
 ```
 
 or add
 
 ```json
-"maileryio/_____": "*"
+"maileryio/widget-datepicker": "*"
 ```
 
 to the require section of your composer.json.

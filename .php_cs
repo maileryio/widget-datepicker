@@ -2,9 +2,9 @@
 
 $date = date('Y');
 $header = <<<EOF
-_____
-@link      https://github.com/maileryio/_____
-@package   _____
+Datepicker Widget for Mailery Platform
+@link      https://github.com/maileryio/widget-datepicker
+@package   Mailery\Widget\Datepicker
 @license   BSD-3-Clause
 @copyright Copyright (c) {$date}, Mailery (https://mailery.io/)
 EOF;

@@ -1,16 +1,16 @@
 {
-    "name": "maileryio/_____",
+    "name": "maileryio/widget-datepicker",
     "type": "library",
-    "description": "_____",
+    "description": "Datepicker Widget for Mailery Platform",
     "keywords": [
         "_____"
     ],
-    "homepage": "https://github.com/maileryio/_____",
+    "homepage": "https://github.com/maileryio/widget-datepicker",
     "license": "BSD-3-Clause",
     "support": {
-        "source": "https://github.com/maileryio/_____",
-        "issues": "https://github.com/maileryio/_____/issues",
-        "wiki": "https://github.com/maileryio/_____/wiki"
+        "source": "https://github.com/maileryio/widget-datepicker",
+        "issues": "https://github.com/maileryio/widget-datepicker/issues",
+        "wiki": "https://github.com/maileryio/widget-datepicker/wiki"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -25,12 +25,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Mailery\\_____\\": "src"
+            "Mailery\\Widget\\Datepicker\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Mailery\\_____\\Tests\\": "tests"
+            "Mailery\\Widget\\Datepicker\\Tests\\": "tests"
         }
     },
     "scripts": {
