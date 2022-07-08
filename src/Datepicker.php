@@ -5,11 +5,20 @@ namespace Mailery\Widget\Datepicker;
 use Mailery\Widget\Datepicker\DatepickerAssetBundle;
 use Yiisoft\Assets\AssetManager;
 use Yiisoft\Html\Tag\CustomTag;
-use Yiisoft\Form\Widget\Attribute\ChoiceAttributes;
-use Yiisoft\Form\Widget\Attribute\PlaceholderInterface;
+use Yiisoft\Form\Field\Base\InputField;
+use Yiisoft\Form\Field\Base\EnrichmentFromRules\EnrichmentFromRulesTrait;
+use Yiisoft\Form\Field\Base\EnrichmentFromRules\EnrichmentFromRulesInterface;
+use Yiisoft\Form\Field\Base\ValidationClass\ValidationClassTrait;
+use Yiisoft\Form\Field\Base\ValidationClass\ValidationClassInterface;
+use Yiisoft\Form\Field\Base\Placeholder\PlaceholderInterface;
+use Yiisoft\Form\Field\Base\Placeholder\PlaceholderTrait;
 
-class Datepicker extends ChoiceAttributes implements PlaceholderInterface
+class Datepicker extends InputField implements EnrichmentFromRulesInterface, ValidationClassInterface, PlaceholderInterface
 {
+
+    use EnrichmentFromRulesTrait;
+    use ValidationClassTrait;
+    use PlaceholderTrait;
 
     /**
      * @var AssetManager
@@ -31,7 +40,7 @@ class Datepicker extends ChoiceAttributes implements PlaceholderInterface
     public function type(string $type): self
     {
         $new = clone $this;
-        $new->attributes['type'] = $type;
+        $new->inputAttributes['type'] = $type;
         return $new;
     }
 
@@ -42,18 +51,7 @@ class Datepicker extends ChoiceAttributes implements PlaceholderInterface
     public function format(string $format): self
     {
         $new = clone $this;
-        $new->attributes['format'] = $format;
-        return $new;
-    }
-
-    /**
-     * @param string $value
-     * @return self
-     */
-    public function placeholder(string $value): self
-    {
-        $new = clone $this;
-        $new->attributes['placeholder'] = $value;
+        $new->inputAttributes['format'] = $format;
         return $new;
     }
 
@@ -64,7 +62,7 @@ class Datepicker extends ChoiceAttributes implements PlaceholderInterface
     public function clearable(bool $value = true): self
     {
         $new = clone $this;
-        $new->attributes[':clearable'] = json_encode($value);
+        $new->inputAttributes[':clearable'] = json_encode($value);
         return $new;
     }
 
@@ -75,7 +73,7 @@ class Datepicker extends ChoiceAttributes implements PlaceholderInterface
     public function closeOnSelect(string $value): self
     {
         $new = clone $this;
-        $new->attributes['close-on-select'] = $value;
+        $new->inputAttributes['close-on-select'] = $value;
         return $new;
     }
 
@@ -86,7 +84,7 @@ class Datepicker extends ChoiceAttributes implements PlaceholderInterface
     public function disable(bool $value = true): self
     {
         $new = clone $this;
-        $new->attributes[':disabled'] = json_encode($value);
+        $new->inputAttributes[':disabled'] = json_encode($value);
         return $new;
     }
 
@@ -97,7 +95,7 @@ class Datepicker extends ChoiceAttributes implements PlaceholderInterface
     public function hourOptions(array $value): self
     {
         $new = clone $this;
-        $new->attributes[':hour-options'] = json_encode($value);
+        $new->inputAttributes[':hour-options'] = json_encode($value);
         return $new;
     }
 
@@ -108,7 +106,7 @@ class Datepicker extends ChoiceAttributes implements PlaceholderInterface
     public function minuteOptions(array $value): self
     {
         $new = clone $this;
-        $new->attributes[':minute-options'] = json_encode($value);
+        $new->inputAttributes[':minute-options'] = json_encode($value);
         return $new;
     }
 
@@ -119,20 +117,20 @@ class Datepicker extends ChoiceAttributes implements PlaceholderInterface
     public function secondOptions(array $value): self
     {
         $new = clone $this;
-        $new->attributes[':second-options'] = json_encode($value);
+        $new->inputAttributes[':second-options'] = json_encode($value);
         return $new;
     }
 
     /**
      * {@inheritdoc}
      */
-    protected function run(): string
+    protected function generateInput(): string
     {
         $this->assetManager->register(DatepickerAssetBundle::class);
 
-        $attributes = $this->build($this->attributes);
+        $attributes = $this->getInputAttributes();
 
-        $value = $attributes['value'] ?? $this->getAttributeValue();
+        $value = $attributes['value'] ?? $this->getFormAttributeValue();
         unset($attributes['value']);
 
         if (is_object($value)) {
@@ -143,7 +141,8 @@ class Datepicker extends ChoiceAttributes implements PlaceholderInterface
             $attributes['value'] = $value;
         }
 
-        $attributes['class-name'] = $attributes['class'] ?? '';
+        $attributes['name'] ??= $this->getInputName();
+        $attributes['class-name'] = implode(' ', $attributes['class'] ?? '');
         unset($attributes['class']);
 
         return CustomTag::name('ui-datepicker')->attributes($attributes)->render();
